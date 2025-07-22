@@ -7,13 +7,7 @@ import { siteConfig } from '@/lib/config'
 export default function PoweredBy(props) {
   return (
     <div className={`inline text-sm font-serif ${props.className || ''}`}>
-      <span className='mr-1'>Powered by</span>
-      <a
-        href='https://github.com/tangly1024/NotionNext'
-        className='underline justify-start'>
-        NotionNext {siteConfig('VERSION')}
-      </a>
-      .
+      <span className="text-gray-400">© 2025 KEY mon 的博客</span>
     </div>
   )
 }
