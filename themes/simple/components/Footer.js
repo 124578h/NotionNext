@@ -35,7 +35,7 @@ export default function Footer(props) {
           )}
           <BeiAnGongAn />
           <div className={`inline text-sm font-serif ${props.className || ''}`}>
-      <span className="text-gray-400">© 2025 KEY mon 的博客</span>
+      <span className="text-gray-400">© 2025 Monkey 的博客</span>
     </div>
         </div>
       </div>
