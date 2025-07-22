@@ -1,54 +1,44 @@
-import LazyImage from '@/components/LazyImage'
+import { BeiAnGongAn } from '@/components/BeiAnGongAn'
+import DarkModeButton from '@/components/DarkModeButton'
 import { siteConfig } from '@/lib/config'
-import Link from 'next/link'
-import CONFIG from '../config'
-import SocialButton from './SocialButton'
 
 /**
- * 网站顶部
+ * 页脚
+ * @param {*} props
  * @returns
  */
-export default function Header(props) {
-  const { siteInfo } = props
+export default function Footer(props) {
+  const d = new Date()
+  const currentYear = d.getFullYear()
+  const since = siteConfig('SINCE')
+  const copyrightDate =
+    parseInt(since) < currentYear ? since + '-' + currentYear : currentYear
 
   return (
-    <header className='text-center justify-between items-center px-6 bg-white h-80 dark:bg-black relative z-10'>
-      <div className='float-none inline-block py-12'>
-        <Link href='/'>
-          {/* 可使用一张单图作为logo */}
-          <div className='flex space-x-6 justify-center'>
-            <div className='hover:rotate-45 hover:scale-125 transform duration-200 cursor-pointer justify-center items-center flex'>
-              <LazyImage
-                priority={true}
-                src={siteInfo?.icon}
-                className='rounded-full'
-                width={100}
-                height={100}
-                alt={siteConfig('AUTHOR')}
-              />
-            </div>
+    <footer className='relative w-full bg-black px-6 border-t'>
+      <DarkModeButton className='text-center pt-4' />
 
-            <div className='flex-col flex justify-center'>
-              <div className='text-2xl font-serif dark:text-white py-2 hover:scale-105 transform duration-200'>
-                {siteConfig('AUTHOR')}
-              </div>
-              <div
-                className='font-light dark:text-white py-2 hover:scale-105 transform duration-200 text-center'
-                dangerouslySetInnerHTML={{
-                  __html: siteConfig('SIMPLE_LOGO_DESCRIPTION', null, CONFIG)
-                }}
-              />
-            </div>
-          </div>
-        </Link>
-
-        <div className='flex justify-center'>
-          <SocialButton />
+      <div className='text-yellow-300 container mx-auto max-w-4xl py-6 md:flex flex-wrap md:flex-no-wrap md:justify-between items-center text-sm'>
+        <div className='text-center'>
+          &copy;{`${copyrightDate}`} {siteConfig('AUTHOR')}. All rights
+          reserved.
         </div>
-        <div className='text-xs mt-4 text-gray-500 dark:text-gray-300'>
-          {siteConfig('DESCRIPTION')}
+        <div className='md:p-0 text-center md:text-right text-xs'>
+          {/* 右侧链接 */}
+          {/* underline hover:underline">Privacy Policy */}
+          {siteConfig('BEI_AN') && (
+            <a
+              href={siteConfig('BEI_AN_LINK')}
+              className='no-underline hover:underline ml-4'>
+              {siteConfig('BEI_AN')}
+            </a>
+          )}
+          <BeiAnGongAn />
+          <div className={`inline text-sm font-serif ${props.className || ''}`}>
+      <span className="text-gray-400">© 2025 KEY mon 的博客</span>
+    </div>
         </div>
       </div>
-    </header>
+    </footer>
   )
 }
