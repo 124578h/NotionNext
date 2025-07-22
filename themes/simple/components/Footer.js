@@ -25,7 +25,7 @@ export default function Footer(props) {
         </div>
         <div className='md:p-0 text-center md:text-right text-xs'>
           {/* 右侧链接 */}
-          {/* <a href="#" className="text-black no-underline hover:underline">Privacy Policy</a> */}
+          {/* underline hover:underline">Privacy Policy */}
           {siteConfig('BEI_AN') && (
             <a
               href={siteConfig('BEI_AN_LINK')}
@@ -34,14 +34,9 @@ export default function Footer(props) {
             </a>
           )}
           <BeiAnGongAn />
-          <span className='no-underline ml-4'>
-            Powered by
-            <a
-              href='https://github.com/tangly1024/NotionNext'
-              className=' hover:underline'>
-              NotionNext {siteConfig('VERSION')}
-            </a>
-          </span>
+          <div className={`inline text-sm font-serif ${props.className || ''}`}>
+      <span className="text-gray-400">© 2025 KEY mon 的博客</span>
+    </div>
         </div>
       </div>
     </footer>
